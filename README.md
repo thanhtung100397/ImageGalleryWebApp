@@ -4,8 +4,8 @@ Web app quản lí và chia sẻ hình ảnh
 Công nghệ sử dụng: 
 1. FrontEnd: Angular 2 
 2. BackEnd: Firebase
-Nhóm 1  - Lớp thực hành số 1 môn phát triển ứng dụng web INT3306 3
-# Member
+
+# Nhóm 1  - Lớp thực hành số 1 môn phát triển ứng dụng web INT3306 3
 1.Trần Thanh Tùng (Nhóm Trưởng)
 
 2 Bùi Quang Trường
