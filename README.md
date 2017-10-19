@@ -29,36 +29,36 @@ https://imagegallery-476df.firebaseapp.com/app-home
   |----- app.e2e-spec.ts<br />
   |----- app.po.ts<br />
   |----- tsconfig.e2e.json<br />
-
+<br />
 |- node_modules/<br />
-
+<br />
 |- dist/<br />
-
+<br />
 |- src/<br />
-  |----- app/
-  |----- assets/
-  |----- environments/
-      |----- environment.prod.ts|ts
-  |----- favicon.ico
-  |----- index.html
-  |----- main.ts
-  |----- polyfills.ts
-  |----- styles.css
-  |----- test.ts
-  |----- tsconfig.app.json
-  |----- tsconfig.spec.json
-  |----- typings.d.ts
-
-|- .angular-cli.json 
-|- .editorconfig    
-|- .gitignore
-|- firebase.json
-|- karma.conf.js
-|- package.json
-|- protractor.conf.js
-|- README.md
-|- tsconfig.json
-|- tslint.json
+  |----- app/<br />
+  |----- assets/<br />
+  |----- environments/<br />
+      |----- environment.prod.ts|ts<br />
+  |----- favicon.ico<br />
+  |----- index.html<br />
+  |----- main.ts<br />
+  |----- polyfills.ts<br />
+  |----- styles.css<br />
+  |----- test.ts<br />
+  |----- tsconfig.app.json<br />
+  |----- tsconfig.spec.json<br />
+  |----- typings.d.ts<br />
+<br />
+|- .angular-cli.json<br />
+|- .editorconfig<br />  
+|- .gitignore<br />
+|- firebase.json<br />
+|- karma.conf.js<br />
+|- package.json<br />
+|- protractor.conf.js<br />
+|- README.md<br />
+|- tsconfig.json<br />
+|- tslint.json<br />
 
 ## Database 
 Sử dụng Firebase (Google's mobile platform) làm backend cho ứng dụng
