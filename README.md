@@ -64,7 +64,7 @@ https://imagegallery-476df.firebaseapp.com/app-home
 |- tslint.json<br />
 
 ## Backend
-Sử dụng Firebase (Google's mobile platform) làm backend cho ứng dụng
+Sử dụng Firebase (Google's mobile platform) làm backend cho ứng dụng<br />
 Các tính năng sử dụng:
 1. Firebase Authentication: Xác minh người dùng
 2. Realtime Database: Database NoSQL thời gian thực
