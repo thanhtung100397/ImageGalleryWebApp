@@ -1,6 +1,9 @@
 # ImageGalleryWebApp
 
 Web app quản lí và chia sẻ hình ảnh
+Công nghệ sử dụng: 
+1. FrontEnd: Angular 2 
+2. BackEnd: Firebase
 Nhóm 1  - Lớp thực hành số 1 môn phát triển ứng dụng web INT3306 3
 # Member
 1.Trần Thanh Tùng (Nhóm Trưởng)
@@ -60,7 +63,7 @@ https://imagegallery-476df.firebaseapp.com/app-home
 |- tsconfig.json<br />
 |- tslint.json<br />
 
-## Database 
+## Backend
 Sử dụng Firebase (Google's mobile platform) làm backend cho ứng dụng
 Các tính năng sử dụng:
 1. Firebase Authentication: Xác minh người dùng
