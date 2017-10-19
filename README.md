@@ -4,9 +4,13 @@ Web app quản lí và chia sẻ hình ảnh
 Nhóm 1  - Lớp thực hành số 1 môn phát triển ứng dụng web INT3306 3
 # Member
 1.Trần Thanh Tùng (Nhóm Trưởng)
+
 2 Bùi Quang Trường
+
 3. Phạm Quang Trường
+
 4.Đỗ Xuân Toàn
+
 5.Nguyễn Vân Hải
 
 ## Development server
@@ -21,16 +25,16 @@ https://imagegallery-476df.firebaseapp.com/app-home
 
 ## Struture
 
-|- e2e/
-  |----- app.e2e-spec.ts
-  |----- app.po.ts
-  |----- tsconfig.e2e.json
+|- e2e/<br />
+  |----- app.e2e-spec.ts<br />
+  |----- app.po.ts<br />
+  |----- tsconfig.e2e.json<br />
 
-|- node_modules/
+|- node_modules/<br />
 
-|- dist/
+|- dist/<br />
 
-|- src/
+|- src/<br />
   |----- app/
   |----- assets/
   |----- environments/
