@@ -4,13 +4,9 @@ Web app quản lí và chia sẻ hình ảnh
 Nhóm 1  - Lớp thực hành số 1 môn phát triển ứng dụng web INT3306 3
 # Member
 1.Trần Thanh Tùng (Nhóm Trưởng)
-
 2 Bùi Quang Trường
-
 3. Phạm Quang Trường
-
 4.Đỗ Xuân Toàn
-
 5.Nguyễn Vân Hải
 
 ## Development server
@@ -60,7 +56,7 @@ https://imagegallery-476df.firebaseapp.com/app-home
 |- tsconfig.json
 |- tslint.json
 
-#Database 
+## Database 
 Sử dụng Firebase (Google's mobile platform) làm backend cho ứng dụng
 Các tính năng sử dụng:
 1. Firebase Authentication: Xác minh người dùng
