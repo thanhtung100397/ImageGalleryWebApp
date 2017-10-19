@@ -1,0 +1,23 @@
+<mz-navbar [navbarClass]="'blue'">
+  <mz-navbar-item-container [align]="'left'">
+    <mz-navbar-item>
+      <a mz-button flat="true" float="true">
+        <i mz-icon [icon]="'menu'"></i>
+      </a>
+    </mz-navbar-item>
+  </mz-navbar-item-container>
+
+  <a href="#" class="brand-logo" (click)="navigateToHome()">Image Gallery</a>
+
+  <mz-navbar-item-container [align]="'right'">
+    <mz-navbar-item>
+      <a class="waves-effect waves-light">
+        <i mz-icon [icon]="'search'"></i>
+      </a>
+    </mz-navbar-item>
+
+    <mz-navbar-item>
+      <a mz-button flat="true" style="color: white; text-transform: capitalize !important" (click)="onSignInButtonClicked()">Sign in</a>
+    </mz-navbar-item>
+  </mz-navbar-item-container>
+</mz-navbar>

@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="formContainer">
+    <mz-card [hoverable]="true">
+      <mz-card-title style="color: #2196F3; font-size: 40px">
+        Register
+      </mz-card-title>
+      <mz-card-content>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
+          <div class="row">
+            <mz-input-container class="col s6 m6">
+              <input mz-input mz-validation required
+                     title="first name"
+                     id="input-firstName"
+                     formControlName="firstName"
+                     type="text"
+                     [errorMessageResource]="errorMessages.firstName"
+                     [label]="'First name'">
+            </mz-input-container>
+
+            <mz-input-container class="col s6 m6">
+              <input mz-input mz-validation required
+                     title="last name"
+                     id="input-lastName"
+                     formControlName="lastName"
+                     type="text"
+                     [errorMessageResource]="errorMessages.lastName"
+                     [label]="'Last name'">
+            </mz-input-container>
+          </div>
+
+          <div class="row">
+            <mz-input-container class="col s12 m12">
+              <input mz-input mz-validation required
+                     title="email"
+                     id="input-email"
+                     formControlName="email"
+                     type="text"
+                     [errorMessageResource]="errorMessages.email"
+                     [label]="'Email'">
+            </mz-input-container>
+          </div>
+
+          <div class="row">
+            <mz-input-container class="col s12 m12">
+              <input mz-input mz-validation required
+                     title="password"
+                     id="input-password"
+                     formControlName="password"
+                     type="password"
+                     [errorMessageResource]="errorMessages.password"
+                     [label]="'Password'"
+                     (input)="onInputPassword()">
+            </mz-input-container>
+          </div>
+
+          <div class="row">
+            <mz-input-container class="col s12 m12">
+              <input mz-input mz-validation required
+                     title="confirmPassword"
+                     id="input-confirmPassword"
+                     formControlName="confirmPassword"
+                     type="password"
+                     [errorMessageResource]="errorMessages.confirmPassword"
+                     [label]="'Confirm Password'">
+            </mz-input-container>
+          </div>
+
+          <div class="row">
+            <button mz-button [disabled]="!registerForm.valid" type="submit" class="col s12 m12">Create new account
+            </button>
+          </div>
+
+          <div class="row">
+            <a class="clickText col s12 m12" (click)="navigateToSignIn()" style="text-align: center">Have an account? <strong>Sign in</strong></a>
+          </div>
+        </form>
+      </mz-card-content>
+    </mz-card>
+  </div>
+</div>
+
