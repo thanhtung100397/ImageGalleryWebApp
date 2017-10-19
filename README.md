@@ -1,28 +1,70 @@
 # ImageGalleryWebApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.1.
+Web app quản lí và chia sẻ hình ảnh
+Nhóm 1  - Lớp thực hành số 1 môn phát triển ứng dụng web INT3306 3
+# Member
+1.Trần Thanh Tùng (Nhóm Trưởng)
+
+2 Bùi Quang Trường
+
+3. Phạm Quang Trường
+
+4.Đỗ Xuân Toàn
+
+5.Nguyễn Vân Hải
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Chạy `ng serve` start local server. 
+2. Vào đường dẫn `http://localhost:4200/` trên trình duyệt
 
-## Code scaffolding
+## Hosting
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Web được trên trên firebase Hosting
+https://imagegallery-476df.firebaseapp.com/app-home
 
-## Build
+## Struture
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+|- e2e/
+  |----- app.e2e-spec.ts
+  |----- app.po.ts
+  |----- tsconfig.e2e.json
 
-## Running unit tests
+|- node_modules/
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+|- dist/
 
-## Running end-to-end tests
+|- src/
+  |----- app/
+  |----- assets/
+  |----- environments/
+      |----- environment.prod.ts|ts
+  |----- favicon.ico
+  |----- index.html
+  |----- main.ts
+  |----- polyfills.ts
+  |----- styles.css
+  |----- test.ts
+  |----- tsconfig.app.json
+  |----- tsconfig.spec.json
+  |----- typings.d.ts
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+|- .angular-cli.json 
+|- .editorconfig    
+|- .gitignore
+|- firebase.json
+|- karma.conf.js
+|- package.json
+|- protractor.conf.js
+|- README.md
+|- tsconfig.json
+|- tslint.json
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#Database 
+Sử dụng Firebase (Google's mobile platform) làm backend cho ứng dụng
+Các tính năng sử dụng:
+1. Firebase Authentication: Xác minh người dùng
+2. Realtime Database: Database NoSQL thời gian thực
+3. Cloud Storage: Host upload các file (ảnh)
+4. Hosting: Host để deploy web app
+5. Cloud Functions: Tạo các trigger cho realtime database, cloud storage
