@@ -1,8 +1,9 @@
 <mz-navbar [navbarClass]="'blue'">
   <mz-navbar-item-container [align]="'left'">
     <mz-navbar-item>
-      <a mz-button flat="true" float="true">
-        <i mz-icon [icon]="'menu'"></i>
+      <a mz-button flat="true" float="true" (click)="navigateToPreviousComponent()">
+        <i mz-icon [icon]="'menu'" *ngIf="previousRoute === '/'"></i>
+        <i mz-icon [icon]="'arrow_back'" *ngIf="previousRoute !== ''" (click)="navigateToPreviousComponent()"></i>
       </a>
     </mz-navbar-item>
   </mz-navbar-item-container>
@@ -17,7 +18,30 @@
     </mz-navbar-item>
 
     <mz-navbar-item>
-      <a mz-button flat="true" style="color: white; text-transform: capitalize !important" (click)="onSignInButtonClicked()">Sign in</a>
+      <a mz-button flat="true" style="color: white; text-transform: capitalize !important" (click)="navigateToSignIn()"
+         *ngIf="user == null">Sign in</a>
+
+      <a *ngIf="user != null">
+        <mz-dropdown
+          [id]="'user-popup'"
+          [align]="'left'"
+          [belowOrigin]="true"
+          [constrainWidth]="true"
+          [dropdownButtonId]="'btn-user'"
+          [inDuration]="200"
+          [outDuration]="100">
+          <mz-dropdown-item><a>Profile</a></mz-dropdown-item>
+          <mz-dropdown-divider></mz-dropdown-divider>
+          <mz-dropdown-item><a (click)="signOut()">Sign out</a></mz-dropdown-item>
+        </mz-dropdown>
+
+        <a id="btn-user" class="waves-effect waves-light">
+          <img src="assets/images/avatar_placeholder.png" alt=""
+               class="circle avatarIcon inLineItem centerVerticalItem">
+          <p class="inLineItem centerVerticalItem" style="margin: 0">{{(userInfo | async)?.firstName +' '+ (userInfo | async)?.lastName}}</p>
+        </a>
+      </a>
     </mz-navbar-item>
   </mz-navbar-item-container>
 </mz-navbar>
+

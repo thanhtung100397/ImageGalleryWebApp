@@ -1,0 +1,45 @@
+<div class="card hoverable">
+  <div class="cardHeader">
+    <div class="inLineItem centerVerticalItem">
+      <img src="{{cardData.ownerAvatarUrl}}" alt="" class="circle avatarIcon"
+           *ngIf="!cardData.ownerAvatarUrl && cardData.ownerAvatarUrl !== ''">
+      <img src="assets/images/avatar_placeholder.png" alt="" class="circle avatarIcon"
+           *ngIf="cardData.ownerAvatarUrl || cardData.ownerAvatarUrl === ''">
+    </div>
+    <div class="inLineItem centerVerticalItem">
+      <p class="title ownerLabel"><strong>{{cardData?.owner}}</strong></p>
+      <p class="grayLabel">{{cardData?.ownerEmail}}</p>
+      <div>
+        <img src="assets/images/view_icon.png" class="inLineItem centerVerticalItem marginRight-5px">
+        <p class="grayLabel inLineItem centerVerticalItem">{{(imageRef | async)?.view}}</p>
+        <img src="assets/images/upload_date_icon.png" class="inLineItem centerVerticalItem marginLeft-15px">
+        <p class="grayLabel inLineItem centerVerticalItem">{{(imageRef | async)?.uploadDate | date}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-image">
+    <img src="{{(imageRef | async)?.imageUrl}}">
+    <span class="card-title">
+      {{(imageRef | async)?.title}}
+    </span>
+    <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="unFavoriteImage()"
+       *ngIf="cardData.isFavorite">
+      <i class="material-icons">favorite</i>
+    </a>
+    <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="favoriteImage()"
+       *ngIf="!cardData.isFavorite">
+      <i class="material-icons">favorite_border</i>
+    </a>
+  </div>
+  <div class="card-content">
+    <p>{{(imageRef | async)?.description}}</p>
+    <div style="margin-top: 10px">
+      <i class="material-icons icon-gray inLineItem centerVerticalItem marginRight-5px">favorite_border</i>
+      <p class="grayLabel-w50px inLineItem centerVerticalItem">{{cardData.favoriteUsers}}</p>
+      <i class="material-icons icon-gray inLineItem centerVerticalItem marginRight-5px marginLeft-15px">message</i>
+      <p class="grayLabel-w50px inLineItem centerVerticalItem">{{(imageRef | async)?.comment}}</p>
+    </div>
+  </div>
+</div>
+

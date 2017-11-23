@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import 'rxjs/add/operator/pairwise';
 import {Router} from '@angular/router';
 
 @Component({
@@ -7,7 +8,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(router: Router) {
-    router.navigate(['/app-home']);
+  previousRoute = '';
+
+  constructor(private router: Router) {
+    this.router.navigate(['/app-home']);
+  }
+
+  onComponentAdded(event: any) {
+    this.previousRoute = event.previousRoute;
   }
 }

@@ -1,11 +1,44 @@
 <div class="nav-content" xmlns="">
   <ul class="tabs tabsGroup">
-    <li id="social_tab" class="tab col s3"><a href="#social" style="color: black">Social</a></li>
-    <li id="follow_tab" class="tab col s3"><a class="active" href="#follow">Follow</a></li>
+    <li id="social_tab" class="tab col s3"><a class="active" href="#social" style="color: black">Social</a></li>
+    <li id="follow_tab" class="tab col s3"><a href="#follow">Follow</a></li>
     <li id="group_tab" class="tab col s3"><a href="#group">Group</a></li>
   </ul>
 </div>
 
-<div id="social" class="col s12 blue">Social</div>
-<div id="follow" class="col s12 green">Follow</div>
-<div id="group" class="col s12 yellow">Group</div>
+<div id="social" class="row">
+  <div class="col s12 m6 l4 xl4" *ngFor="let image of (socialImages|async)">
+    <app-image-card [path] = "'social'" [image]="image"></app-image-card>
+  </div>
+</div>
+<div id="follow" class="col s12"></div>
+<div id="group" class="col s12"></div>
+
+<a class="fixed-action-btn horizontal">
+  <a mz-button float="true" large="true">
+    <i class="large material-icons" (click)="navigateToUploadImage()">cloud_upload</i>
+  </a>
+  <ul>
+    <li>
+      <a mz-button float="true" class="red">
+        <i class="material-icons">insert_chart</i>
+      </a>
+    </li>
+    <li>
+      <a mz-button float="true" class="yellow darken-1">
+        <i class="material-icons">format_quote</i>
+      </a>
+    </li>
+    <li>
+      <a mz-button float="true" class="green">
+        <i class="material-icons">publish</i>
+      </a>
+    </li>
+    <li>
+      <a mz-button float="true" class="blue">
+        <i class="material-icons">attach_file</i>
+      </a>
+    </li>
+  </ul>
+</a>
+

@@ -2,7 +2,25 @@
   background-color: #2196F3;
 }
 
-.userAvatar {
-  width: 48px;
-  height: 48px;
+.white-icon {
+  color: white;
+}
+
+.avatarIcon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.inLineItem {
+  display:inline-table;
+}
+
+.centerVerticalItem {
+  vertical-align: middle;
+}
+
+.userButton {
+  color: white;
+  text-transform: capitalize !important;
 }
