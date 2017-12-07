@@ -1,0 +1,184 @@
+.imagePanel {
+  width: 65%;
+  height: 550px;
+  float: left;
+  padding: 5px;
+  border-right: thin solid gray;
+}
+
+.wrap-content {
+  overflow: hidden;
+}
+
+.match-parent-height {
+  height: 100%;
+}
+
+.img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.lightGray {
+  color: lightgray !important;
+}
+
+.gray {
+  color: gray;
+}
+
+.dark-gray {
+  color: darkgray !important;
+}
+
+.alignLeft {
+  float: left;
+}
+
+.alignRight {
+  float: right;
+}
+
+.informationPanel {
+  width: 35%;
+  height: 550px;
+  float: right;
+  padding: 5px;
+}
+
+.inLineItem {
+  display:inline-table;
+}
+
+.ownerInformation {
+  width: 100%;
+  padding: 5px 10px;
+  overflow: hidden;
+  border-bottom: thin solid gray;
+}
+
+.tag-wrapper {
+  padding: 2px;
+  float: left;
+}
+
+.tag-view {
+  color: #26a69a;
+}
+
+.marginRight-5px {
+  margin-right: 5px;
+}
+
+.marginLeft-15px {
+  margin-left: 15px;
+}
+
+.marginLeft-10px {
+  margin-left: 10px;
+}
+
+.centerVerticalItem {
+  vertical-align: middle;
+}
+
+.imageInfo {
+  width: 100%;
+  height: 60px;
+  padding: 5px 10px;
+}
+
+.grayLabel-w30px {
+  font-size: 20px;
+  width: 30px;
+  color: #A2A2A2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.commentLabel {
+  font-size: 16px;
+  color: #A2A2A2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+}
+
+.ownerLabel {
+  font-size: 20px;
+  margin: 0;
+}
+
+.comment {
+  border: darkgray solid thin;
+  border-radius: 3px;
+  width: 100%;
+  overflow: hidden;
+  padding: 5px;
+}
+
+.grayRoundBorder {
+  border: darkgray solid thin;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.mediumGrayRoundBorder {
+  border: darkgray solid thin;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  padding: 5px;
+}
+
+span {
+  white-space: pre;
+  display:block;
+  width:100px;
+  word-wrap:break-word;
+}
+
+.tinyLabel {
+  font-size: 13px;
+  margin: 0;
+  font-style: italic;
+  color: #A2A2A2;
+}
+
+.grayLabel {
+  font-size: 15px;
+  color: #A2A2A2;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.blackLabel {
+  font-size: 13px;
+  color: black;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#style-1::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+  border-radius: 6px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #919191;
+  opacity: 0.5;
+}

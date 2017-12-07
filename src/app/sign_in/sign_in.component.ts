@@ -63,6 +63,7 @@ export class SignInComponent implements OnInit {
     this.assignUser();
     this.angularFireAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password)
       .then(success => {
+        window.location.reload();
         this.toast.show(this.signInSuccessMessage,
           1000,
           'toastColor',

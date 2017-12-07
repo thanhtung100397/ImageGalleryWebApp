@@ -1,14 +1,13 @@
 <div class="card hoverable">
   <div class="cardHeader">
     <div class="inLineItem centerVerticalItem">
-      <img src="{{cardData.ownerAvatarUrl}}" alt="" class="circle avatarIcon"
-           *ngIf="!cardData.ownerAvatarUrl && cardData.ownerAvatarUrl !== ''">
-      <img src="assets/images/avatar_placeholder.png" alt="" class="circle avatarIcon"
-           *ngIf="cardData.ownerAvatarUrl || cardData.ownerAvatarUrl === ''">
+      <img src="{{(imageOwner|async)?.avatarUrl || 'assets/images/avatar_placeholder.png'}}" alt=""
+           class="circle avatarIcon">
     </div>
     <div class="inLineItem centerVerticalItem">
-      <p class="title ownerLabel"><strong>{{cardData?.owner}}</strong></p>
-      <p class="grayLabel">{{cardData?.ownerEmail}}</p>
+      <p class="title ownerLabel"><strong>{{(imageOwner|async)?.firstName+' '+(imageOwner|async)?.lastName}}</strong>
+      </p>
+      <p class="grayLabel">{{(imageOwner|async)?.email}}</p>
       <div>
         <img src="assets/images/view_icon.png" class="inLineItem centerVerticalItem marginRight-5px">
         <p class="grayLabel inLineItem centerVerticalItem">{{(imageRef | async)?.view}}</p>
@@ -16,29 +15,46 @@
         <p class="grayLabel inLineItem centerVerticalItem">{{(imageRef | async)?.uploadDate | date}}</p>
       </div>
     </div>
+
+    <div class="inLineItem centerVerticalItem" *ngIf="isAdmin || isOwner">
+      <a mz-tooltip class="btn-floating halfway-fab waves-effect waves-light"
+         [tooltip]="'Delete Image'"
+         [position]="'top'"
+         [delay]="300"
+         (click)="deleteImage()">
+        <i class="material-icons gray">delete</i>
+      </a>
+    </div>
   </div>
 
-  <div class="card-image">
+  <div class="card-image" (click)="onCardClicked()">
     <img src="{{(imageRef | async)?.imageUrl}}">
     <span class="card-title">
       {{(imageRef | async)?.title}}
     </span>
-    <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="unFavoriteImage()"
-       *ngIf="cardData.isFavorite">
+    <a mz-tooltip class="btn-floating halfway-fab waves-effect waves-light red" (click)="unFavoriteImage()"
+       *ngIf="cardData.isFavorite"
+       [tooltip]="'Liked'"
+       [position]="'top'"
+       [delay]="300">
       <i class="material-icons">favorite</i>
     </a>
-    <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="favoriteImage()"
-       *ngIf="!cardData.isFavorite">
+    <a mz-tooltip class="btn-floating halfway-fab waves-effect waves-light red" (click)="favoriteImage()"
+       *ngIf="!cardData.isFavorite"
+       [tooltip]="'Like'"
+       [position]="'top'"
+       [delay]="300">
       <i class="material-icons">favorite_border</i>
     </a>
   </div>
   <div class="card-content">
-    <p>{{(imageRef | async)?.description}}</p>
+    <div class="description">{{(imageRef | async)?.description}}</div>
     <div style="margin-top: 10px">
       <i class="material-icons icon-gray inLineItem centerVerticalItem marginRight-5px">favorite_border</i>
-      <p class="grayLabel-w50px inLineItem centerVerticalItem">{{cardData.favoriteUsers}}</p>
-      <i class="material-icons icon-gray inLineItem centerVerticalItem marginRight-5px marginLeft-15px">message</i>
-      <p class="grayLabel-w50px inLineItem centerVerticalItem">{{(imageRef | async)?.comment}}</p>
+      <p class="grayLabel-w30px inLineItem centerVerticalItem">{{cardData.favoriteUsers}}</p>
+      <i class="material-icons icon-gray centerVerticalItem inLineItem marginRight-5px marginLeft-15px">mode_comment</i>
+      <p class="grayLabel-w30px inLineItem centerVerticalItem inLineItem marginRight-5px marginLeft-15px">
+        {{cardData.comments}}</p>
     </div>
   </div>
 </div>

@@ -1,18 +1,20 @@
 <div class="nav-content" xmlns="">
   <ul class="tabs tabsGroup">
     <li id="social_tab" class="tab col s3"><a class="active" href="#social" style="color: black">Social</a></li>
-    <li id="follow_tab" class="tab col s3"><a href="#follow">Follow</a></li>
-    <li id="group_tab" class="tab col s3"><a href="#group">Group</a></li>
+    <li id="follow_tab" class="tab col s3" *ngIf="currentUserID"><a href="#me">Me</a></li>
   </ul>
 </div>
 
 <div id="social" class="row">
-  <div class="col s12 m6 l4 xl4" *ngFor="let image of (socialImages|async)">
-    <app-image-card [path] = "'social'" [image]="image"></app-image-card>
+  <div class="col s12 m6 l4 xl4" *ngFor="let image of socialImages">
+    <app-image-card [path] = "'social'" [image]="image" (onPressed)="showImageDetailModal($event)"></app-image-card>
   </div>
 </div>
-<div id="follow" class="col s12"></div>
-<div id="group" class="col s12"></div>
+<div id="me" class="row">
+  <div class="col s12 m6 l4 xl4" *ngFor="let image of meImages">
+    <app-image-card [path] = "'social'" [image]="image" (onPressed)="showImageDetailModal($event)"></app-image-card>
+  </div>
+</div>
 
 <a class="fixed-action-btn horizontal">
   <a mz-button float="true" large="true">

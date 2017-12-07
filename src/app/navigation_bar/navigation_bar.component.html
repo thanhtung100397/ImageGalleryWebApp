@@ -36,9 +36,8 @@
         </mz-dropdown>
 
         <a id="btn-user" class="waves-effect waves-light">
-          <img src="assets/images/avatar_placeholder.png" alt=""
-               class="circle avatarIcon inLineItem centerVerticalItem">
-          <p class="inLineItem centerVerticalItem" style="margin: 0">{{(userInfo | async)?.firstName +' '+ (userInfo | async)?.lastName}}</p>
+          <img src="{{(userInfo|async)?.avatarUrl || 'assets/images/avatar_placeholder.png'}}" alt="" class="circle avatarIcon inLineItem centerVerticalItem">
+          <p class="inLineItem centerVerticalItem" style="margin: 0">{{((userInfo | async)?.firstName || '') +' '+ ((userInfo | async)?.lastName || '')}}</p>
         </a>
       </a>
     </mz-navbar-item>

@@ -1,0 +1,110 @@
+<mz-modal [fullscreen]="true" [options]="modalOptions" style="overflow-y: hidden;">
+  <mz-modal-content>
+    <div style="width: 100%; height: 100%;">
+      <div class="imagePanel valign-wrapper">
+        <img class="img materialboxed" src="{{(imageRef|async)?.imageUrl || ''}}"/>
+      </div>
+
+      <div class="informationPanel" id="style-1" style="overflow-y: scroll">
+        <div class="ownerInformation">
+          <div class="valign-wrapper match-parent-height" style="float: left">
+            <img src="{{(imageOwner | async)?.avatarUrl || 'assets/images/avatar_placeholder.png'}}" alt=""
+                 class="circle avatarIcon avatar">
+          </div>
+
+          <div class="valign-wrapper wrap-content inLineItem" style="float: left;margin-left: 10px">
+            <p class="title ownerLabel"><strong>{{((imageOwner | async)?.firstName || '') +' '+ ((imageOwner |
+              async)?.lastName || '')}}</strong></p>
+            <p class="grayLabel">{{(imageOwner | async)?.ownerEmail || ''}}</p>
+            <div>
+              <div style="float: left">
+                <img src="assets/images/view_icon.png" class="inLineItem centerVerticalItem marginRight-5px">
+                <p class="grayLabel inLineItem centerVerticalItem">{{(imageRef|async)?.view}}</p>
+              </div>
+              <div style="float: right">
+                <img src="assets/images/upload_date_icon.png" class="inLineItem centerVerticalItem marginLeft-15px">
+                <p class="grayLabel inLineItem centerVerticalItem">{{(imageRef|async)?.uploadDate | date}}</p>
+              </div>
+            </div>
+          </div>
+
+          <button mz-button [float]="true" [flat]="true" mz-modal-close class="alignRight">
+            <i class="tiny material-icons lightGray">close</i>
+          </button>
+        </div>
+
+        <div class="wrap-content" style="float: left; margin-top: 10px;">
+          <div class="tag-wrapper" *ngFor="let tag of (imageRef|async)?.tags">
+            <mz-badge
+              [value]="tag"
+              [badgeClass]="'tag-view'">
+            </mz-badge>
+          </div>
+        </div>
+
+        <div class="wrap-content" style="margin-top: 10px; padding: 5px">
+          {{(imageRef|async)?.description}}
+        </div>
+
+        <div class="wrap-content valign-wrapper"
+             style="width: 100%; height: 60px; margin-top: 10px; padding-left: 10px; border-top: thin solid gray; border-bottom: thin solid gray">
+          <button mz-button mz-tooltip [flat]="true" [float]="true" (click)="unFavoriteImage()"
+                  *ngIf="modalData.isFavorite"
+                  [tooltip]="'Liked'"
+                  [position]="'top'"
+                  [delay]="300">
+            <i class="gray material-icons">favorite</i>
+          </button>
+          <button mz-button mz-tooltip [flat]="true" [float]="true" (click)="favoriteImage()"
+                  *ngIf="!modalData.isFavorite"
+                  [tooltip]="'Like'"
+                  [position]="'top'"
+                  [delay]="300">
+            <i class="gray material-icons">favorite_border</i>
+          </button>
+
+          <p class="grayLabel-w30px inLineItem centerVerticalItem marginLeft-10px marginRight-15px">
+            {{modalData.favoriteUsers}}</p>
+
+          <i class="material-icons gray inLineItem marginRight-5px centerVerticalItem"
+             style="float: right; margin-left: 25px">mode_comment</i>
+          <p class="commentLabel inLineItem centerVerticalItem">{{modalData.commentCount == 0? 'no comments' : modalData.commentCount+' comment'}}</p>
+        </div>
+
+        <div class="row"
+             style="margin-top: 10px; margin-bottom: 10px;padding-top: 5px; padding-bottom: 5px">
+          <div class="col s12 m12 l12 xl12">
+
+            <div class="row mediumGrayRoundBorder">
+              <div class="col s2 m2 l2 xl2 valign-wrapper" style="padding-left: 0">
+                <img src="{{(currentUserRef | async)?.avatarUrl || 'assets/images/avatar_placeholder.png'}}" alt=""
+                     class="circle avatarIcon avatar">
+              </div>
+              <mz-input-container class="col s10 m10 l10 xl10">
+                <input mz-input
+                       title="comment"
+                       id="input-comment"
+                       type="text"
+                       [label]="'Enter comment'"
+                       [(ngModel)]="comment.content"
+                       (keyup.enter)="submitComment()">
+              </mz-input-container>
+            </div>
+
+            <div class="row comment" *ngFor="let comment of modalData.comments">
+              <div class="col s2 m2 l2 xl2" style="padding-left: 0">
+                <img src="{{comment.avatarUrl || 'assets/images/avatar_placeholder.png'}}" alt="" class="circle avatarIcon avatar">
+              </div>
+
+              <div class="wrap-content inLineItem col s10 m10 l10 xl10">
+                <p class="title" style="margin: 0"><strong>{{comment.name}}</strong></p>
+                <p class="tinyLabel">{{comment.postedDate|date}}</p>
+                <p class="blackLabel">{{comment.content}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mz-modal-content>
+</mz-modal>

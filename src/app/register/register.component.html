@@ -64,6 +64,24 @@
                      [errorMessageResource]="errorMessages.confirmPassword"
                      [label]="'Confirm Password'">
             </mz-input-container>
+
+            <div class="row">
+              <mz-input-container class="col s12 m12 l12 xl12" style="margin-left: 6px">
+                <div class="file-field input-field">
+                  <div class="btn">
+                    <span>Avatar</span>
+                    <input title="select avatar"
+                           id="input-image"
+                           type="file"
+                           #file
+                           (change)="onFileChange(file.files)">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
+                </div>
+              </mz-input-container>
+            </div>
           </div>
 
           <div class="row">
@@ -75,6 +93,11 @@
             <a class="clickText col s12 m12" (click)="navigateToSignIn()" style="text-align: center">Have an account? <strong>Sign in</strong></a>
           </div>
         </form>
+
+        <mz-progress *ngIf="isProcessing"
+                     [backgroundClass]="'blue lighten-4'"
+                     [progressClass]="'blue'">
+        </mz-progress>
       </mz-card-content>
     </mz-card>
   </div>

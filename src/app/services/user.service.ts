@@ -1,7 +1,8 @@
-import {AngularFireDatabase, AngularFireObject} from 'angularfire2/database';
+import {AngularFireDatabase, AngularFireObject, SnapshotAction} from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from '../models/User';
 import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class UserService {
@@ -20,7 +21,6 @@ export class UserService {
     this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(success => {
         user.email = email;
-        user.avatarUrl = '';
         this.saveUser(user, onSuccess, onFailed);
       })
       .catch(failed => onFailed.code = this.EMAIL_EXIST);
@@ -33,6 +33,13 @@ export class UserService {
     return this.database.object('users/' + userID);
   }
 
+  updateUserAvatarUrl(userID: string, avatarUrl: string, success, error) {
+    this.database.object('users/' + userID + '/avatarUrl')
+      .set(avatarUrl)
+      .then(success)
+      .catch(error);
+  }
+
   getCurrentUserID() {
     const currentUser = this.firebaseAuth.auth.currentUser;
     if (currentUser != null) {
@@ -43,6 +50,14 @@ export class UserService {
 
   fetchCurrentUserInfo(): AngularFireObject<User> | null {
     return this.fetchUserInfo(this.getCurrentUserID());
+  }
+
+  createUserReference(userID: string): Observable<User> {
+    return this.database.object('users/' + userID).valueChanges();
+  }
+
+  createCurrentUserReference(): Observable<User> {
+    return this.database.object('users/' + this.getCurrentUserID()).valueChanges();
   }
 
   private saveUser(user: User, onSuccess: any, onFailed: any) {

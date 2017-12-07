@@ -48,7 +48,10 @@ export class NavigationBarComponent {
       .then(success => {
         this.toast.show(this.signOutSuccessfullyMessage,
           1000,
-          'toastColor');
+          'toastColor',
+          complete => {
+            window.location.reload();
+          });
       })
       .catch(error => {
         this.toast.show(this.signOutFailedMessage,

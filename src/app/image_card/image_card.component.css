@@ -2,6 +2,12 @@
   color: black;
 }
 
+.description {
+  line-height: 2.5ex;
+  height: 7.5ex;
+  overflow: hidden;
+}
+
 .cardHeader {
   display: inline-table ;
   padding: 10px;

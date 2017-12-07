@@ -20,3 +20,9 @@
 .clickText:hover {
   color: #4DABF5;
 }
+
+.errorText {
+  color: red;
+  margin-top: 3px;
+  font-size: 11px;
+}

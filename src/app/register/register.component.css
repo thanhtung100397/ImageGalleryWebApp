@@ -17,6 +17,13 @@
   cursor: pointer;
 }
 
+.greenLabel {
+  color: lightseagreen;
+  margin-top: 3px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
 .clickText:hover {
   color: #4DABF5;
 }

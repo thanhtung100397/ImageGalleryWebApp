@@ -4,12 +4,13 @@ import {Router} from '@angular/router';
 import {MzToastService} from 'ng2-materialize';
 import {UserService} from '../services/user.service';
 import {User} from '../models/User';
+import {UploadImageService} from '../services/upload_image.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  providers: [UserService]
+  providers: [UserService, UploadImageService]
 })
 
 export class RegisterComponent implements OnInit {
@@ -46,12 +47,16 @@ export class RegisterComponent implements OnInit {
     }
   };
 
+  selectedImageFile: File;
+  isProcessing = false;
+
   registerSuccessMessage = 'Register successfully';
   unexpectedErrorMessage = 'An unexpected error occurred, please try again';
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private userService: UserService,
+              private uploadService: UploadImageService,
               private toast: MzToastService) {
     this.userInfo = new User();
   }
@@ -94,6 +99,15 @@ export class RegisterComponent implements OnInit {
     this.userInfo.lastName = this.user.lastName.trim();
   }
 
+  onFileChange(files: any) {
+    console.log(files);
+    if (files.length > 0) {
+      this.selectedImageFile = files[0];
+    } else {
+      this.selectedImageFile = null;
+    }
+  }
+
   onSubmit() {
     const passwordAbsControl = this.registerForm.get('password');
     const confirmPasswordAbsControl = this.registerForm.get('confirmPassword');
@@ -101,28 +115,59 @@ export class RegisterComponent implements OnInit {
       confirmPasswordAbsControl.setErrors({contentMismatch: true});
     } else {
       this.assignUser();
+      this.isProcessing = true;
       this.userService.registerUser(this.user.email,
         this.user.password,
         this.userInfo,
         onSuccess => {
-          this.toast.show(this.registerSuccessMessage,
-            1000,
-            'toastColor',
-            complete => this.navigateToHome());
+          if (this.selectedImageFile != null) {
+            const currentUserID = this.userService.getCurrentUserID();
+            this.uploadService.uploadUserAvatar(currentUserID,
+              this.selectedImageFile,
+              (imageUrl: string) => {
+                this.userService.updateUserAvatarUrl(currentUserID, imageUrl,
+                  success => {
+                    this.isProcessing = false;
+                    this.toast.show(this.registerSuccessMessage,
+                      1000,
+                      'toastColor',
+                      complete => this.navigateToHome());
+                  },
+                  error => {
+                    this.isProcessing = false;
+                    this.toast.show(this.unexpectedErrorMessage,
+                      1000,
+                      'toastColor');
+                  });
+              },
+              error => {
+                this.isProcessing = false;
+                this.toast.show(this.unexpectedErrorMessage,
+                  1000,
+                  'toastColor');
+              });
+          } else {
+            this.isProcessing = false;
+            this.toast.show(this.registerSuccessMessage,
+              1000,
+              'toastColor',
+              complete => this.navigateToHome());
+          }
         },
         onFailed => {
           switch (onFailed.code) {
             case this.userService.EMAIL_EXIST: {
+              this.isProcessing = false;
               const emailAbsControl = this.registerForm.get('email');
               emailAbsControl.setErrors({emailExist: true});
             }
-            break;
+              break;
 
             default: {
+              this.isProcessing = false;
               this.toast.show(this.unexpectedErrorMessage,
                 1000,
-                'toastColor',
-                complete => this.navigateToSignIn());
+                'toastColor');
             }
           }
         });

@@ -4,8 +4,9 @@ export class Image {
   public ownerID = '';
   public description = '';
   public imageUrl = '';
-  public comment = 0;
+  public comments = [];
   public uploadDate = 0;
-  public view = 0;
+  public view: number;
+  public tags = [];
   public favoriteUsers = [];
 }

@@ -7,7 +7,7 @@ import {AppComponent} from './app.component';
 import {NavigationBarComponent} from './navigation_bar/navigation_bar.component';
 import {SignInComponent} from './sign_in/sign_in.component';
 import {HomeComponent} from './home/home.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RegisterComponent} from './register/register.component';
 import {RouterModule, Routes} from '@angular/router';
 import {environment} from '../environments/environment';
@@ -17,8 +17,7 @@ import {ImageCardComponent} from './image_card/image_card.component';
 import {UploadImageComponent} from './upload_image/upload_image.component';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
-import {UserService} from './services/user.service';
-import {UploadImageService} from './services/upload_image.service';
+import {ImageDetailModalComponent} from './image_detail_modal/image_detail_modal.component';
 
 const appRoutes: Routes = [
   {path: 'app-home', component: HomeComponent},
@@ -35,7 +34,8 @@ const appRoutes: Routes = [
     SignInComponent,
     RegisterComponent,
     ImageCardComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    ImageDetailModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,10 +43,14 @@ const appRoutes: Routes = [
     MaterializeModule.forRoot(),
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(environment.firebase, 'Image-Gallery')
+    AngularFireModule.initializeApp(environment.firebase, 'Image-Gallery'),
+    FormsModule
   ],
   providers: [AngularFireAuth, AngularFireDatabase],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    ImageDetailModalComponent
+  ]
 })
 export class AppModule {
 }

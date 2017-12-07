@@ -33,20 +33,36 @@
 
           <div class="row">
             <mz-input-container class="col s12 m12 l12 xl12">
-              <input mz-input mz-validation required
-                     title="imageUrl"
-                     id="input-image-url"
-                     formControlName="imageUrl"
-                     type="text"
-                     [errorMessageResource]="errorMessages.imageUrl"
-                     [label]="'Image Url'">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Image</span>
+                  <input title="image"
+                         id="input-image"
+                         type="file"
+                         #file
+                         (change)="onFileChange(file.files)">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+              <div class="errorText" *ngIf="isShowImagePathMessage">
+                {{errorMessages.image.required}}
+              </div>
             </mz-input-container>
           </div>
 
           <div class="row">
-            <button mz-button [disabled]="!uploadImageForm.valid" type="submit" class="col s12 m12 l12 xl12">Upload Image</button>
+            <button mz-button [disabled]="!uploadImageForm.valid || !isImageSelected" type="submit" class="col s12 m12 l12 xl12">Upload
+              Image
+            </button>
           </div>
         </form>
+
+        <mz-progress *ngIf="isProcessing"
+          [backgroundClass]="'blue lighten-4'"
+          [progressClass]="'blue'">
+        </mz-progress>
       </mz-card-content>
     </mz-card>
   </div>
